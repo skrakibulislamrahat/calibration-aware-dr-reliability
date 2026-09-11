@@ -1,75 +1,72 @@
-# JBHI-1: Calibration-Aware Multimodal Deep Learning for Diabetic Retinopathy
+# Calibration-Aware and Seed-Stable Deep Learning for Diabetic Retinopathy
 
-This repository contains the experimental artifacts, evaluation results, and figures associated with the JBHI submission on calibration-aware and seed-stable deep learning models for diabetic retinopathy (DR) classification.
+This repository is the **experiment audit and reproducibility-artifact bundle** for a diabetic-retinopathy study focused on probability calibration, robustness across random seeds, and generalization across retinal-imaging datasets.
 
-The focus of this work is not only predictive performance, but also **probability calibration**, **robustness across random seeds**, and **generalization behavior** on APTOS and Messidor-2 benchmarks.
+The emphasis is not only discrimination performance, but whether predicted probabilities remain reliable and whether conclusions are stable across repeated runs.
 
----
+## Research focus
 
-## Repository Structure
+The experimental artifacts support analysis of:
 
-JBHI_1/
-├── configs/ # Experiment configurations, seeds, environment metadata
-├── figures/ # Figures used in the manuscript
-├── metrics_fixed/ # Final, cleaned evaluation metrics (used for reporting)
-├── predictions/ # Selected model probability outputs (CSV)
-├── sdi/ # Stability / diagnostic analysis outputs
-├── splits/ # Dataset split definitions (JSON)
-├── tables/ # Tables used in the manuscript
-├── JBHI_1.pdf # Submitted manuscript (JBHI version)
-└── .gitignore
-
-yaml
-Copy code
-
----
+- predictive discrimination on retinal fundus images;
+- probability calibration before and after recalibration;
+- variability across random seeds;
+- dataset-shift/generalization behavior;
+- predefined data splits and experiment configurations;
+- traceability from reported tables/figures back to saved metrics and predictions.
 
 ## Datasets
 
-Experiments are conducted using publicly available retinal fundus datasets:
+The study uses public retinal-imaging benchmarks including:
 
-- **APTOS 2019** (primary evaluation)
-- **Messidor-2** (external validation)
+- **APTOS 2019** for primary experiments;
+- **Messidor-2** for external/generalization analysis.
 
-Dataset files are **not included** in this repository due to licensing constraints.  
-All experiments are reproducible using the provided split definitions and configurations.
+Raw datasets are not redistributed in this repository.
 
----
+## Repository structure
 
-## Experimental Protocol
+```text
+.
+├── configs/          # global configuration, seeds, environment snapshots, tuning plans/results
+├── figures/          # manuscript/result figures
+├── metrics_fixed/    # finalized evaluation metrics used for reporting
+├── predictions/      # selected probability/prediction outputs
+├── sdi/              # stability and diagnostic-analysis artifacts
+├── splits/           # saved dataset split definitions
+├── tables/           # derived manuscript/reporting tables
+├── JBHI_1.pdf        # manuscript snapshot associated with this artifact bundle
+├── ARTIFACT_INDEX.md # how to audit the experiment outputs
+├── .gitignore
+└── README.md
+```
 
-- Multiple architectures evaluated (e.g., ResNet, EfficientNet, ViT variants)
-- Multiple random seeds per configuration
-- Calibration analysis performed on uncalibrated and calibrated outputs
-- Metrics aggregated across seeds for robustness assessment
+## Reproducibility scope
 
-Reported results are based on **finalized metrics only** (`metrics_fixed/`) to avoid ambiguity or metric leakage.
+This repository is intentionally an **artifact bundle rather than a plug-and-play training package**. It preserves experiment inputs/metadata and finalized outputs needed to audit the reported analysis: configuration files, random seeds, split definitions, environment snapshots, prediction outputs, tuning records, metrics, tables, and figures.
 
----
+Training code and large model checkpoints are not represented here as a complete standalone training framework. Accordingly, the repository should be used for **result traceability and experiment auditing**, not described as a one-command reproduction package.
 
-## Reproducibility Notes
+## Audit workflow
 
-- Training checkpoints and logs are intentionally excluded to keep the repository lightweight and reviewer-friendly.
-- All configuration files, dataset splits, and final metrics required to reproduce reported results are included.
-- Environment and dependency snapshots are provided in `configs/`.
+A reviewer or collaborator can use the repository in this order:
 
----
+1. inspect `configs/global_config.json`, `configs/seeds.json`, and the environment snapshots;
+2. inspect `splits/` to verify predefined sample partitions;
+3. inspect `predictions/` and `metrics_fixed/` for saved model outputs and finalized metrics;
+4. trace statistical/diagnostic analyses through `sdi/`;
+5. compare `tables/` and `figures/` with the manuscript snapshot.
 
-## Manuscript
+See [`ARTIFACT_INDEX.md`](ARTIFACT_INDEX.md) for more detail.
 
-`JBHI_1.pdf` corresponds to the version submitted to IEEE Journal of Biomedical and Health Informatics.
+## Reporting policy
 
-Figures and tables in the manuscript directly map to the contents of the `figures/` and `tables/` directories.
+Only finalized results in `metrics_fixed/` should be treated as reporting artifacts. Intermediate files should not be substituted for the finalized analysis without documenting the change.
 
----
+## Research status
 
-## Disclaimer
+This repository preserves a manuscript-associated research snapshot. Formal citation metadata should be updated when a stable publication record/DOI is available.
 
-This repository is intended for **research transparency and reproducibility**.  
-It is not optimized as a plug-and-play training framework.
+## Responsible use
 
----
-
-## Contact
-
-For questions related to the experiments or repository structure, please contact the corresponding author listed in the manuscript.
+The repository is for research transparency and reproducibility auditing. It is not a clinical diagnostic system and should not be used for patient-care decisions.
