@@ -6,8 +6,8 @@ authors:
   - family-names: "Rahat"
     given-names: "SK Rakib Ul Islam"
     orcid: "https://orcid.org/0009-0005-0744-8398"
-repository-code: "https://github.com/skrakibulislamrahat/JBHI_1"
-url: "https://github.com/skrakibulislamrahat/JBHI_1"
+repository-code: "https://github.com/skrakibulislamrahat/calibration-aware-dr-reliability"
+url: "https://github.com/skrakibulislamrahat/calibration-aware-dr-reliability"
 abstract: "Experiment-audit artifacts for studying calibration, seed stability, model reliability, and external generalization in diabetic-retinopathy classification."
 keywords:
   - trustworthy AI
