@@ -1,5 +1,7 @@
 # Calibration-Aware and Seed-Stable Deep Learning for Diabetic Retinopathy
 
+> **Research hub:** [Portfolio view](https://skrakibulislamrahat.github.io/#project-calibration) · [Artifact index](ARTIFACT_INDEX.md) · [Finalized metrics](metrics_fixed/) · [Citation metadata](CITATION.cff)
+
 This repository is the **experiment audit and reproducibility-artifact bundle** for a diabetic-retinopathy study focused on probability calibration, robustness across random seeds, and generalization across retinal-imaging datasets.
 
 The emphasis is not only discrimination performance, but whether predicted probabilities remain reliable and whether conclusions are stable across repeated runs.
